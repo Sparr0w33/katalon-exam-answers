@@ -18,6 +18,41 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 
 WebUI.callTestCase(findTestCase('Common/GoToUrl'), [('url') : GlobalVariable.homeUrl + '?controller=addresses'])
 
+
+
+
+addButton = WebUI.callTestCase(findTestCase('Common/FindAddress'), [('alias') : alias], null)
+
+
+if (!addButton) {
+	
+
+WebUI.click(findTestObject('Object Repository/Page_Addresses - My Store/span_Add a new address'))
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__firstname'), firstname)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__lastname'), lastname)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input_Company_company'), company)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__address1'), address)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__city'), city)
+
+WebUI.selectOptionByValue(findTestObject('Object Repository/Page_Address - My Store/select_-AlabamaAlaskaArizonaAr'), state, 
+    true)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__postcode'), postcode)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__phone'), phone)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__phone_mobile'), phone_mobile)
+
+WebUI.setText(findTestObject('Object Repository/Page_Address - My Store/input__alias'), alias)
+
+WebUI.click(findTestObject('Object Repository/Page_Address - My Store/button_Save'))
+}
